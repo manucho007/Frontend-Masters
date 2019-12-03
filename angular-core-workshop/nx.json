@@ -8,10 +8,10 @@
     "nx.json": "*"
   },
   "projects": {
-    "angular-core-e2e": {
+    "dashboard-e2e": {
       "tags": []
     },
-    "angular-core": {
+    "dashboard": {
       "tags": []
     }
   }

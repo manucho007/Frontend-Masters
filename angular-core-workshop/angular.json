@@ -1,39 +1,39 @@
 {
   "version": 1,
   "projects": {
-    "angular-core": {
+    "dashboard": {
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/angular-core",
-      "sourceRoot": "apps/angular-core/src",
+      "root": "apps/dashboard",
+      "sourceRoot": "apps/dashboard/src",
       "prefix": "angular-core-workshop",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/angular-core",
-            "index": "apps/angular-core/src/index.html",
-            "main": "apps/angular-core/src/main.ts",
-            "polyfills": "apps/angular-core/src/polyfills.ts",
-            "tsConfig": "apps/angular-core/tsconfig.app.json",
+            "outputPath": "dist/apps/dashboard",
+            "index": "apps/dashboard/src/index.html",
+            "main": "apps/dashboard/src/main.ts",
+            "polyfills": "apps/dashboard/src/polyfills.ts",
+            "tsConfig": "apps/dashboard/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "apps/angular-core/src/favicon.ico",
-              "apps/angular-core/src/assets"
+              "apps/dashboard/src/favicon.ico",
+              "apps/dashboard/src/assets"
             ],
-            "styles": ["apps/angular-core/src/styles.scss"],
+            "styles": ["apps/dashboard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/angular-core/src/environments/environment.ts",
-                  "with": "apps/angular-core/src/environments/environment.prod.ts"
+                  "replace": "apps/dashboard/src/environments/environment.ts",
+                  "with": "apps/dashboard/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -63,63 +63,63 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-core:build"
+            "browserTarget": "dashboard:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-core:build:production"
+              "browserTarget": "dashboard:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-core:build"
+            "browserTarget": "dashboard:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/angular-core/tsconfig.app.json",
-              "apps/angular-core/tsconfig.spec.json"
+              "apps/dashboard/tsconfig.app.json",
+              "apps/dashboard/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/angular-core/**"]
+            "exclude": ["**/node_modules/**", "!apps/dashboard/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/angular-core/jest.config.js",
-            "tsConfig": "apps/angular-core/tsconfig.spec.json",
-            "setupFile": "apps/angular-core/src/test-setup.ts"
+            "jestConfig": "apps/dashboard/jest.config.js",
+            "tsConfig": "apps/dashboard/tsconfig.spec.json",
+            "setupFile": "apps/dashboard/src/test-setup.ts"
           }
         }
       }
     },
-    "angular-core-e2e": {
-      "root": "apps/angular-core-e2e",
-      "sourceRoot": "apps/angular-core-e2e/src",
+    "dashboard-e2e": {
+      "root": "apps/dashboard-e2e",
+      "sourceRoot": "apps/dashboard-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/angular-core-e2e/cypress.json",
-            "tsConfig": "apps/angular-core-e2e/tsconfig.e2e.json",
-            "devServerTarget": "angular-core:serve"
+            "cypressConfig": "apps/dashboard-e2e/cypress.json",
+            "tsConfig": "apps/dashboard-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dashboard:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-core:serve:production"
+              "devServerTarget": "dashboard:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/angular-core-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/angular-core-e2e/**"]
+            "tsConfig": ["apps/dashboard-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/dashboard-e2e/**"]
           }
         }
       }
@@ -137,5 +137,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "angular-core"
+  "defaultProject": "dashboard"
 }
