@@ -9,17 +9,19 @@ import { MaterialModule } from '@angular-core-workshop/material';
 import { HomeModule } from './home/home.module';
 import { CustomersModule } from './customers/customers.module';
 import { ProjectsModule } from './projects/projects.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HomeModule,
     CustomersModule,
-    ProjectsModule
+    ProjectsModule,
+    RouterModule.forRoot([], { initialNavigation: 'enabled' })
   ],
   providers: [],
   bootstrap: [AppComponent]
