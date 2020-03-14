@@ -1,4 +1,7 @@
+import { ProjectsService } from './../../../../../libs/core-data/src/lib/projects/projects.service';
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'libs/core-data/src/lib/projects/project';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -10,33 +13,13 @@ export class ProjectsComponent implements OnInit {
   // Events are ()
   // Properties are []
   primaryColor = 'Red';
-  projects = [
-    {
-      id: '1',
-      title: 'Project One',
-      details: 'This is a sample project',
-      percentComplete: 20,
-      approved: false
-    },
-    {
-      id: '2',
-      title: 'Project Two',
-      details: 'This is a sample project',
-      percentComplete: 40,
-      approved: false
-    },
-    {
-      id: '3',
-      title: 'Project Three',
-      details: 'This is a sample project',
-      percentComplete: 100,
-      approved: true
-    }
-  ];
+  projects$;
   selectedProject;
-  constructor() {}
+  constructor(private projectsService: ProjectsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjects();
+  }
 
   selectProject(project) {
     this.selectedProject = project;
@@ -46,5 +29,17 @@ export class ProjectsComponent implements OnInit {
 
   cancel() {
     this.selectProject(null);
+  }
+
+  getProjects() {
+    // this.projectsService
+    //   .all()
+    //   .subscribe((results: any) => (this.projects = results));
+    this.projects$ = this.projectsService.all();
+  }
+  deleteProjects(project) {
+    this.projectsService
+      .delete(project.id)
+      .subscribe(result => this.getProjects());
   }
 }

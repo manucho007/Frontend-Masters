@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { UiLoginModule } from './../../../../libs/ui-login/src/lib/ui-login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,22 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from '@angular-core-workshop/material';
-import { HomeModule } from './home/home.module';
-import { CustomersModule } from './customers/customers.module';
-import { ProjectsModule } from './projects/projects.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    // AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule,
-    CustomersModule,
-    ProjectsModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    UiLoginModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

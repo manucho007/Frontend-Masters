@@ -11,7 +11,7 @@
         <mat-list>
           <mat-list-item
             (click)="selectProject(project)"
-            *ngFor="let project of projects"
+            *ngFor="let project of projects$ | async"
           >
             <h3 mat-line [style.color]="primaryColor">
               {{ project.title }}
@@ -19,7 +19,12 @@
             <p mat-line>
               {{ project.details }}
             </p>
-            <button mat-icon-button>
+            <button
+              mat-icon-button
+              (click)="
+                deleteProjects(project); $event.stopImmediatePropagation()
+              "
+            >
               <mat-icon>close</mat-icon>
             </button>
           </mat-list-item>
