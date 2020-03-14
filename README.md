@@ -1,3 +1,3 @@
 # FrontEnd Master Courses
 
-- Angular Core
+- Angular Core with NRWL
