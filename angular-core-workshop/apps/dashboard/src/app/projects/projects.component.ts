@@ -19,16 +19,18 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
+    this.resetProject();
   }
 
   selectProject(project) {
-    this.selectedProject = project;
     // We can send an event as well as an object and a property in this case a message as well
     // console.log('Selected project', $event, project, echo);
+    this.selectedProject = project;
+    console.log('Selected', project);
   }
 
   cancel() {
-    this.selectProject(null);
+    this.resetProject();
   }
 
   getProjects() {
@@ -37,9 +39,44 @@ export class ProjectsComponent implements OnInit {
     //   .subscribe((results: any) => (this.projects = results));
     this.projects$ = this.projectsService.all();
   }
-  deleteProjects(project) {
+
+  saveProject(project) {
+    if (!project.id) {
+      this.createProject(project);
+    } else {
+      this.updateProject(project);
+    }
+    console.log('Savin Project', project);
+  }
+
+  createProject(project) {
+    this.projectsService.create(project).subscribe(result => {
+      this.getProjects();
+      this.resetProject();
+    });
+  }
+
+  updateProject(project) {
+    this.projectsService.update(project).subscribe(result => {
+      this.getProjects();
+      this.resetProject();
+    });
+  }
+
+  deleteProject(project) {
     this.projectsService
       .delete(project.id)
       .subscribe(result => this.getProjects());
+  }
+
+  resetProject() {
+    const emptyProject: Project = {
+      id: null,
+      title: '',
+      details: '',
+      percentComplete: 0,
+      approved: false
+    };
+    this.selectProject(emptyProject);
   }
 }
