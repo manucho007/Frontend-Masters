@@ -1,6 +1,7 @@
 <div class="container">
   <!-- PROJECTS LIST -->
   <div class="col-50">
+    <h1>{{ primaryColor }}</h1>
     <angular-core-workshop-projects-list
       [projects]="projects$ | async"
       (selected)="selectProject($event)"
@@ -12,7 +13,7 @@
     <angular-core-workshop-projects-details
       [project]="selectedProject"
       (saved)="saveProject($event)"
-      (cancelled)="cancel()"
+      (cancelled)="cancel($event)"
     ></angular-core-workshop-projects-details>
   </div>
 </div>

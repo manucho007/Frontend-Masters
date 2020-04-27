@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular-core-workshop/material';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsListComponent } from './projects-list.component';
@@ -8,9 +10,9 @@ describe('ProjectsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectsListComponent ]
-    })
-    .compileComponents();
+      declarations: [ProjectsListComponent],
+      imports: [MaterialModule, BrowserAnimationsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

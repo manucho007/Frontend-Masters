@@ -12,9 +12,9 @@ export class ProjectsComponent implements OnInit {
   // It's possible to bind to properties as well like red will be passed to style.color in Html
   // Events are ()
   // Properties are []
-  primaryColor = 'Red';
+  primaryColor = 'red';
   projects$;
-  selectedProject;
+  selectedProject: Project;
   constructor(private projectsService: ProjectsService) {}
 
   ngOnInit() {

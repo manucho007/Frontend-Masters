@@ -7,10 +7,22 @@ import { MaterialModule } from '@angular-core-workshop/material';
 import { FormsModule } from '@angular/forms';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
+import { MatIconModule, MatFormFieldModule } from '@angular/material';
 
 @NgModule({
-  declarations: [ProjectsComponent, ProjectsListComponent, ProjectsDetailsComponent],
-  imports: [CommonModule, ProjectsRoutingModule, MaterialModule, FormsModule],
+  declarations: [
+    ProjectsComponent,
+    ProjectsListComponent,
+    ProjectsDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    ProjectsRoutingModule,
+    MaterialModule,
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule
+  ],
   exports: [ProjectsComponent]
 })
 export class ProjectsModule {}
